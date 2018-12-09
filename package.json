@@ -1,0 +1,30 @@
+{
+  "name": "mocha-dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive test",
+    "test:watch": "mocha --recursive --reporter min test ; gaze --silent \"mocha --recursive --reporter min test\" \"*\" \"lib/**/*\" \"test/**/*\"",
+    "examples": "mocha --recursive examples --reporter index.js || echo '* End of example tests *'",
+    "dogfood": "mocha --recursive --reporter index.js test ; gaze --silent \"mocha --recursive --reporter index.js test\" \"*\" \"lib/**/*\" \"test/**/*\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenj0418/mocha-dashboard.git"
+  },
+  "author": "Ken Johnson <kenj0418@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kenj0418/mocha-dashboard/issues"
+  },
+  "homepage": "https://github.com/kenj0418/mocha-dashboard#readme",
+  "dependencies": {
+    "mocha": "^5.2.0"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "gaze-cli": "^0.2.0",
+    "sinon": "^7.1.1"
+  }
+}
