@@ -13,6 +13,26 @@ describe("reporterOutput", () => {
     mockLog.restore()
   })
 
+  describe("saveColorAndLocation", () => {
+    it("saves the color and location", () => {
+      //ANSI doesn't support just saving the color, which is what we want
+      out.saveColorAndLocation()
+      expect(mockLog.callCount).to.equal(1)
+      expect(mockLog.firstCall.args[0]).to.equal("\033[7")
+    })
+  })
+
+  describe("restoreColor", () => {
+    it("restores only color, not location", () => {
+      //ANSI doesn't support save/restore/query of current color, so can't save it at start
+      //instead, save the location+color at start, then at end save location (at end), restore location+color, then restore location (at end)
+      out.restoreColor()
+      expect(mockLog.callCount).to.equal(1)
+      expect(mockLog.firstCall.args[0]).to.equal("\033[s\033[8\033[u")
+    })
+
+  })
+
   describe("clearScreen", () => {
     it("clears the screen", () => {
       out.clearScreen()
@@ -46,6 +66,6 @@ describe("reporterOutput", () => {
   })
 
   xit("Need Tests", (done) => {
-    done("NEED TESTS")
+    done("Need TESTS")
   })
 })

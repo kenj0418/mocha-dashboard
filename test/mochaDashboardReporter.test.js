@@ -147,7 +147,7 @@ describe("mochaDashboardReporter", () => {
     })
 
     xit("resets color at end", (done) => {
-      done("TEST NEEDED")
+      done("Test NEEDED")
     })
 
     describe("all passing", () => {
